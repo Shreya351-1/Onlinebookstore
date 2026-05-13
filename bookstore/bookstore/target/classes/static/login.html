@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<style>
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#131921;
+font-family:Arial;
+}
+.box{
+background:white;
+padding:30px;
+border-radius:10px;
+width:300px;
+text-align:center;
+}
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+button{
+width:100%;
+padding:10px;
+background:#ffd814;
+border:none;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>Login</h2>
+
+<input id="email" placeholder="Email">
+<input id="pass" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p>New user? <a href="register.html">Register</a></p>
+</div>
+
+<script>
+function login(){
+let u=JSON.parse(localStorage.getItem("user"));
+let e=document.getElementById("email").value;
+let p=document.getElementById("pass").value;
+
+if(u && u.email===e && u.password===p){
+localStorage.setItem("loggedIn","true");
+localStorage.setItem("currentUser",e);
+location.href="index.html";
+}else alert("Wrong details");
+}
+</script>
+
+</body>
+</html>
